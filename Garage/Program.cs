@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Garage.Domain;
+using Garage.Domain.Vehicles;
 
 namespace Garage;
 
@@ -20,8 +21,11 @@ class Program
 
     private static void Initialize()
     {
-        var garage = new Domain.Garage(5);
+        var garage = new Domain.Garage("Globengaraget", 5);
         _garages.Add(garage);
+
+        var car = new Car();
+        car.LicensePlate = "ABC123";
     }
     
     private static bool ShowMenu()
