@@ -19,4 +19,12 @@ public class Menu
             Console.WriteLine(option);
         }
     }
+    
+    public static void Pause()
+    {
+        Console.WriteLine("\nPress any key to continue...");
+        Console.ReadKey();
+        
+        Console.Clear();
+    }
 }
