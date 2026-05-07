@@ -14,4 +14,29 @@ public class Garage
         
         _vehicles = new Array[capacity];
     }
+
+    public void GetVehicles()
+    {
+        // Return a list of vehicles
+    }
+    
+    public void AddVehicle(Vehicle vehicle)
+    {
+        // Add a new vehicle, if unique
+    }
+
+    public void RemoveVehicle(Vehicle vehicle)
+    {
+        // Remove a vehicle, if found
+    }
+    
+    public void FindVehicle(string licencePlate)
+    {
+        // Finds a specific vehicle based on licence plate
+    }
+
+    public void FilterVehicles()
+    {
+        // Returns a list of vehicles based on a filter
+    }
 }
