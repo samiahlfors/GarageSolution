@@ -25,11 +25,13 @@ public class Garage
             return;
         }
         
-        Console.WriteLine($"There are {_vehicleCount} vehicles in the garage");
+        Console.WriteLine($"There {(_vehicleCount == 1 ? "is" : "are")} {_vehicleCount} vehicle{(_vehicleCount > 1 ? "s" : "")} in the garage");
 
         for (var i = 0; i < _vehicleCount; i++)
         {
-            Console.WriteLine(_vehicles[i]);
+            var vehicle = _vehicles[i];
+            var message = $"There's a {vehicle.Color} {vehicle.Brand} {vehicle.Model} with the licence plate: {vehicle.LicensePlate}";
+            Console.WriteLine(message);
         }
     }
     
