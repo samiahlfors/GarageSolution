@@ -2,8 +2,8 @@ namespace Garage.Domain;
 
 public class Garage
 {
-    private Vehicle[] _vehicles;
-    private int _vehicleCount = 0;
+    private ParkingSpot[] _parkingSpots;
+    private int _occupiedSpots = 0;
     private int _freeSpots = 0;
     
     public string Name { get; set; }
@@ -14,31 +14,37 @@ public class Garage
         Name = name;
         Capacity = capacity;
         
-        _vehicles = new Vehicle[capacity];
+        _parkingSpots = new ParkingSpot[capacity];
+        for (var i = 0; i < capacity; i++)
+        {
+            _parkingSpots[i] = new ParkingSpot(i + 1);
+        }
     }
 
     public void GetVehicles()
     {
-        if (_vehicles.Length == 0)
+        if (_occupiedSpots == 0)
         {
             Console.WriteLine($"There are no vehicles in the garage");
             return;
         }
         
-        Console.WriteLine($"There {(_vehicleCount == 1 ? "is" : "are")} {_vehicleCount} vehicle{(_vehicleCount > 1 ? "s" : "")} in the garage");
+        Console.WriteLine($"There are {_occupiedSpots} occupied spots");
 
-        for (var i = 0; i < _vehicleCount; i++)
+        for (var i = 0; i < _occupiedSpots; i++)
         {
-            var vehicle = _vehicles[i];
-            var message = $"There's a {vehicle.Color} {vehicle.Brand} {vehicle.Model} with the licence plate: {vehicle.LicensePlate}";
+            var vehicle = _parkingSpots[i].ParkedVehicle;
+            var message = $"There's a {vehicle.Color} {vehicle.Brand} {vehicle.Model} with the licence plate: {vehicle.LicensePlate}, and they are parked on spot {_parkingSpots[i].SpotIndex}";
             Console.WriteLine(message);
         }
     }
     
-    public void AddVehicle(Vehicle vehicle)
+    public void ParkVehicle(Vehicle vehicle)
     {
-        _vehicles[_vehicleCount] = vehicle;
-        _vehicleCount++;
+        if (_parkingSpots[_occupiedSpots].Park(vehicle))
+        {
+            _occupiedSpots++;
+        }
     }
 
     public void RemoveVehicle(Vehicle vehicle)

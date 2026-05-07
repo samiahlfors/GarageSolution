@@ -27,12 +27,13 @@ class Program
         var car = new Car
         {
             Brand = "Audi",
+            Model = "A4",
             Color = "Red",
             NumberOfWheels = 4,
             LicensePlate = "ABC123"
         };
         
-        garage.AddVehicle(car);
+        garage.ParkVehicle(car);
     }
     
     private static bool ShowMenu()
