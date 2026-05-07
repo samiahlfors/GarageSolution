@@ -24,8 +24,13 @@ class Program
         var garage = new Domain.Garage("Globengaraget", 5);
         _garages.Add(garage);
 
-        var car = new Car();
-        car.LicensePlate = "ABC123";
+        var car = new Car
+        {
+            Brand = "Audi",
+            Color = "Red",
+            NumberOfWheels = 4,
+            LicensePlate = "ABC123"
+        };
     }
     
     private static bool ShowMenu()
