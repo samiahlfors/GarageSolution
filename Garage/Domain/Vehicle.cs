@@ -1,6 +1,6 @@
 namespace Garage.Domain;
 
-public class Vehicle
+public abstract class Vehicle
 {
-    
+    public string LicensePlate { get; set; }
 }
