@@ -2,7 +2,9 @@ namespace Garage.Domain;
 
 public class Garage
 {
-    private Array _vehicles;
+    private Vehicle[] _vehicles;
+    private int _vehicleCount = 0;
+    private int _freeSpots = 0;
     
     public string Name { get; set; }
     public int Capacity { get; set; }
@@ -12,17 +14,29 @@ public class Garage
         Name = name;
         Capacity = capacity;
         
-        _vehicles = new Array[capacity];
+        _vehicles = new Vehicle[capacity];
     }
 
     public void GetVehicles()
     {
-        // Return a list of vehicles
+        if (_vehicles.Length == 0)
+        {
+            Console.WriteLine($"There are no vehicles in the garage");
+            return;
+        }
+        
+        Console.WriteLine($"There are {_vehicleCount} vehicles in the garage");
+
+        for (var i = 0; i < _vehicleCount; i++)
+        {
+            Console.WriteLine(_vehicles[i]);
+        }
     }
     
     public void AddVehicle(Vehicle vehicle)
     {
-        // Add a new vehicle, if unique
+        _vehicles[_vehicleCount] = vehicle;
+        _vehicleCount++;
     }
 
     public void RemoveVehicle(Vehicle vehicle)

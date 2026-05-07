@@ -31,6 +31,8 @@ class Program
             NumberOfWheels = 4,
             LicensePlate = "ABC123"
         };
+        
+        garage.AddVehicle(car);
     }
     
     private static bool ShowMenu()
@@ -49,10 +51,7 @@ class Program
         switch (choice)
         {
             case 1:
-                foreach (var garage in _garages)
-                {
-                    Console.WriteLine(garage.Capacity.ToString());
-                }
+                _garages[0].GetVehicles();
                 
                 Menu.Pause();
                 
