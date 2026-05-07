@@ -1,5 +1,6 @@
 ﻿using Garage.Domain;
 using Garage.Domain.Vehicles;
+using Garage.Views;
 
 namespace Garage;
 
@@ -11,11 +12,11 @@ class Program
     {
         Initialize();
         
-        var running = true;
+        View? currentView = new MainMenuView();
 
-        while (running)
+        while (currentView != null)
         {
-            running = ShowMenu();
+            currentView = currentView.Render();
         }
     }
 
@@ -34,31 +35,5 @@ class Program
         };
         
         garage.ParkVehicle(car);
-    }
-    
-    private static bool ShowMenu()
-    {
-        Console.Clear();
-        Console.WriteLine($"-- MAIN MENU --");
-
-        var menu = new Menu("Choose an option", [
-            "1 - List Garages",
-            "0 - Exit"
-        ]);
-        menu.Show();
-        
-        var choice = ConsoleInput.GetInt();
-        
-        switch (choice)
-        {
-            case 1:
-                _garages[0].GetVehicles();
-                
-                Menu.Pause();
-                
-                return true;
-            case 0: return false;
-            default: return true;
-        }
     }
 }
