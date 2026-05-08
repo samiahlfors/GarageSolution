@@ -9,7 +9,7 @@ public class MainMenuView(AppState state) : View
     public override string Title => "Garage 1.0";
     public override View? Render()
     {
-        Console.Clear();
+        RenderHeader();
         
         var menu = new Menu("Choose an option", [
              "1 - List Garages",
@@ -21,7 +21,7 @@ public class MainMenuView(AppState state) : View
         var choice = ConsoleInput.GetInt();
         return choice switch
         {
-            1 => new GarageListView(_state),
+            1 => new GarageListView(_state, this),
             //2 => new AddGarageView(),
             0 => null,
             _ => this
