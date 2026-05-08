@@ -3,7 +3,10 @@ namespace Garage;
 public abstract class View
 {
     public abstract string Title { get; }
-    public abstract View? Render();
+    public abstract void Render();
+
+    public virtual void OnEnter() {}
+    public virtual void OnExit() {}
 
     public virtual void RenderHeader()
     {

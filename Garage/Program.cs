@@ -1,5 +1,4 @@
 ﻿using Garage.Application;
-using Garage.Domain;
 using Garage.Domain.Vehicles;
 using Garage.Views;
 
@@ -10,14 +9,15 @@ class Program
     static void Main(string[] args)
     {
         var appState = new AppState();
+        var navigation = new Navigation(appState);
         
         Initialize(appState);
         
-        View? currentView = new MainMenuView(appState);
+        navigation.NavigateTo(new MainMenuView(appState, navigation));
 
-        while (currentView != null)
+        while (navigation.CurrentView != null)
         {
-            currentView = currentView.Render();
+            navigation.CurrentView.Render();
         }
     }
 

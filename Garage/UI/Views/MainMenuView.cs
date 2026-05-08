@@ -2,12 +2,10 @@ using Garage.Application;
 
 namespace Garage.Views;
 
-public class MainMenuView(AppState state) : View
+public class MainMenuView(AppState state, Navigation navigation) : View
 {
-    private readonly AppState _state = state;
-
     public override string Title => "Garage 1.0";
-    public override View? Render()
+    public override void Render()
     {
         RenderHeader();
         
@@ -19,12 +17,15 @@ public class MainMenuView(AppState state) : View
         menu.Show();
          
         var choice = ConsoleInput.GetInt();
-        return choice switch
+        switch (choice)
         {
-            1 => new GarageListView(_state, this),
-            //2 => new AddGarageView(),
-            0 => null,
-            _ => this
-        };
+            case 1:
+                navigation.NavigateTo(new GarageListView(state, navigation), this);
+                break;
+            case 0:
+                navigation.Quit();
+                break;
+            default: break;
+        }
     }
 }

@@ -2,10 +2,10 @@ using Garage.Application;
 
 namespace Garage.Views;
 
-public class GarageListView(AppState state, View previousView) : View
+public class GarageListView(AppState state, Navigation navigation) : View
 {
     public override string Title => "List of Garages";
-    public override View? Render()
+    public override void Render()
     {
         RenderHeader();
 
@@ -30,10 +30,14 @@ public class GarageListView(AppState state, View previousView) : View
             state.CurrentGarage = garage;
         }
 
-        return choice switch
+        switch (choice)
         {
-            0 => previousView,
-            _ => new GarageView(state, this)
-        };
+            case 0:
+                navigation.GoBack();
+                break;
+            default:
+                navigation.NavigateTo(new GarageView(state, navigation, state.CurrentGarage));
+                break;
+        }
     }
 }
