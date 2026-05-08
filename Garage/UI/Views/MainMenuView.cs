@@ -1,7 +1,11 @@
+using Garage.Application;
+
 namespace Garage.Views;
 
-public class MainMenuView : View
+public class MainMenuView(AppState state) : View
 {
+    private readonly AppState _state = state;
+
     public override string Title => "Garage 1.0";
     public override View? Render()
     {
@@ -17,7 +21,7 @@ public class MainMenuView : View
         var choice = ConsoleInput.GetInt();
         return choice switch
         {
-            1 => new GarageListView(),
+            1 => new GarageListView(_state),
             //2 => new AddGarageView(),
             0 => null,
             _ => this

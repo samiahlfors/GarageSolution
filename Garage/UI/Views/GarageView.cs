@@ -1,6 +1,8 @@
+using Garage.Application;
+
 namespace Garage.Views;
 
-public class GarageView : View
+public class GarageView(AppState state) : View
 {
     public override string Title => "Garage";
     public override View? Render()

@@ -1,4 +1,5 @@
-﻿using Garage.Domain;
+﻿using Garage.Application;
+using Garage.Domain;
 using Garage.Domain.Vehicles;
 using Garage.Views;
 
@@ -6,13 +7,13 @@ namespace Garage;
 
 class Program
 {
-    private static List<Domain.Garage> _garages = [];
-    
     static void Main(string[] args)
     {
-        Initialize();
+        var appState = new AppState();
         
-        View? currentView = new MainMenuView();
+        Initialize(appState);
+        
+        View? currentView = new MainMenuView(appState);
 
         while (currentView != null)
         {
@@ -20,11 +21,11 @@ class Program
         }
     }
 
-    private static void Initialize()
+    private static void Initialize(AppState appState)
     {
         var garage = new Domain.Garage("Globengaraget", 5);
-        _garages.Add(garage);
-
+        appState.AddGarage(garage);
+        
         var car = new Car
         {
             Brand = "Audi",
