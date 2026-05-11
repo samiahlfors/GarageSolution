@@ -2,7 +2,7 @@ using Garage.Application;
 
 namespace Garage.Views;
 
-public class GarageView(AppState state, Navigation navigation, Domain.Garage garage) : View
+public class GarageView(AppState state, Navigation navigation) : View
 {
     public override string Title => "Garage";
     public override void Render()
@@ -12,9 +12,11 @@ public class GarageView(AppState state, Navigation navigation, Domain.Garage gar
         RenderHeader();
         
         Console.WriteLine($"Welcome to: {state.CurrentGarage.Name}");
-        Console.WriteLine($"We have {state.CurrentGarage.Capacity} spots");
+        Console.WriteLine($"Occupied: {state.CurrentGarage.OccupiedSpots}/{state.CurrentGarage.Capacity}");
         
         var menu = new Menu("Menu", [
+            "1 - List all cars",
+            "2 - Remove garage",
             "0 - Back"
         ]);
         menu.Show();
@@ -23,6 +25,17 @@ public class GarageView(AppState state, Navigation navigation, Domain.Garage gar
 
         switch (choice)
         {
+            case 1:
+                navigation.NavigateTo(new VehicleListView(state, navigation));
+                break;
+            case 2:
+                if (new ConfirmationView().Confirm("Remove?", "Are you sure you want to delete this garage?"))
+                {
+                    state.RemoveGarage(state.CurrentGarage);
+                    
+                    navigation.GoBackToMainMenu(state);
+                }
+                break;
             case 0:
                 navigation.GoBack();
                 break;
@@ -32,7 +45,5 @@ public class GarageView(AppState state, Navigation navigation, Domain.Garage gar
     public override void OnExit()
     {
         base.OnExit();
-        
-        state.CurrentGarage = null;
     }
 }

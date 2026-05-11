@@ -1,3 +1,5 @@
+using Garage.Views;
+
 namespace Garage.Application;
 
 public class Navigation(AppState appState)
@@ -15,6 +17,11 @@ public class Navigation(AppState appState)
         CurrentView.OnEnter();
     }
 
+    public void GoBackToMainMenu(AppState state)
+    {
+        NavigateTo(new MainMenuView(state, this));
+    }
+    
     public void GoBack()
     {
         if (PreviousView == null) return;

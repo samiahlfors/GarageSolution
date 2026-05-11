@@ -23,20 +23,17 @@ public class GarageListView(AppState state, Navigation navigation) : View
         menu.Show();
 
         var choice = ConsoleInput.GetInt();
-
-        if (choice > 0)
-        {
-            var garage =  state.Garages[choice - 1];
-            state.CurrentGarage = garage;
-        }
-
+        
         switch (choice)
         {
             case 0:
                 navigation.GoBack();
                 break;
             default:
-                navigation.NavigateTo(new GarageView(state, navigation, state.CurrentGarage));
+                var garage = state.Garages[choice - 1];
+                state.SetCurrentGarage(garage);
+                
+                navigation.NavigateTo(new GarageView(state, navigation));
                 break;
         }
     }
