@@ -52,9 +52,20 @@ public class Garage
         // Remove a vehicle, if found
     }
     
-    public void FindVehicle(string licencePlate)
+    public Vehicle? FindVehicle(string licencePlate)
     {
         // Finds a specific vehicle based on licence plate
+        var vehicles = GetVehicles();
+
+        foreach (var vehicle in vehicles)
+        {
+            if (vehicle.LicensePlate == licencePlate)
+            {
+                return vehicle;
+            }
+        }
+        
+        return null;
     }
 
     public void FilterVehicles()
