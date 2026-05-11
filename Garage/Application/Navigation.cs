@@ -5,7 +5,7 @@ namespace Garage.Application;
 public class Navigation
 {
     private Stack<View> History { get; } = new();
-    public View CurrentView => History.Peek();
+    public View? CurrentView => History.Count > 0 ? History.Peek() : null;
     
     public void NavigateTo(View nextView)
     {
@@ -37,6 +37,6 @@ public class Navigation
     
     public void Quit()
     {
-        History.Peek().OnExit();
+        History.Clear();
     }
 }

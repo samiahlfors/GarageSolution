@@ -25,4 +25,9 @@ public class AppState
         CurrentGarage = null;
         Garages.Remove(garage);
     }
+
+    public void Quit(Navigation navigation)
+    {
+        navigation.Quit();
+    }
 }

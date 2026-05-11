@@ -26,7 +26,7 @@ public class MainMenuView(AppState state, Navigation navigation) : View
                 navigation.NavigateTo(new AddGarageView(state, navigation));
                 break;
             case 0:
-                navigation.Quit();
+                state.Quit(navigation);
                 break;
             default: break;
         }
