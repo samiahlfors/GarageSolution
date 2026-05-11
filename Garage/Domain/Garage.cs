@@ -8,6 +8,8 @@ public class Garage
     
     public string Name { get; set; }
     public int Capacity { get; set; }
+    public int OccupiedSpots => _occupiedSpots;
+    public int FreeSpots => _freeSpots;
 
     public Garage(string name, int capacity)
     {
@@ -21,22 +23,20 @@ public class Garage
         }
     }
 
-    public void GetVehicles()
+    public Vehicle[] GetVehicles()
     {
-        if (_occupiedSpots == 0)
-        {
-            Console.WriteLine($"There are no vehicles in the garage");
-            return;
-        }
+        Vehicle[] results = new Vehicle[_occupiedSpots];
         
-        Console.WriteLine($"There are {_occupiedSpots} occupied spots");
-
         for (var i = 0; i < _occupiedSpots; i++)
         {
             var vehicle = _parkingSpots[i].ParkedVehicle;
-            var message = $"There's a {vehicle.Color} {vehicle.Brand} {vehicle.Model} with the licence plate: {vehicle.LicensePlate}, and they are parked on spot {_parkingSpots[i].SpotIndex}";
-            Console.WriteLine(message);
+            if (vehicle != null)
+            {
+                results[i] = vehicle;   
+            }
         }
+        
+        return results;
     }
     
     public void ParkVehicle(Vehicle vehicle)
