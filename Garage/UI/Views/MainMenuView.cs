@@ -12,6 +12,7 @@ public class MainMenuView(AppState state, Navigation navigation) : View
         var menu = new Menu("Choose an option", [
              $"1 - List Garages ({state.Garages.Count})",
              "2 - Add New Garage",
+             "3 - Find Vehicle",
              "0 - Exit"
         ]);
         menu.Show();
@@ -24,6 +25,9 @@ public class MainMenuView(AppState state, Navigation navigation) : View
                 break;
             case 2:
                 navigation.NavigateTo(new AddGarageView(state, navigation));
+                break;
+            case 3:
+                navigation.NavigateTo(new SearchView(state, navigation));
                 break;
             case 0:
                 state.Quit(navigation);
