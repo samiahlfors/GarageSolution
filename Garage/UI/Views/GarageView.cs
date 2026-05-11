@@ -15,8 +15,9 @@ public class GarageView(AppState state, Navigation navigation) : View
         Console.WriteLine($"Occupied: {state.CurrentGarage.OccupiedSpots}/{state.CurrentGarage.Capacity}");
         
         var menu = new Menu("Menu", [
-            "1 - List all cars",
-            "2 - Remove garage",
+            "1 - List all vehicles",
+            "2 - Park vehicle",
+            "3 - Remove garage",
             "0 - Back"
         ]);
         menu.Show();
@@ -29,6 +30,9 @@ public class GarageView(AppState state, Navigation navigation) : View
                 navigation.NavigateTo(new VehicleListView(state, navigation));
                 break;
             case 2:
+                navigation.NavigateTo(new AddVehicleView(state, navigation));
+                break;
+            case 3:
                 if (new ConfirmationView().Confirm("Remove?", "Are you sure you want to delete this garage?"))
                 {
                     state.RemoveGarage(state.CurrentGarage);
