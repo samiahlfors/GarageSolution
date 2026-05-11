@@ -1,5 +1,6 @@
 using Garage.Application;
 using Garage.Domain;
+using Garage.Domain.Enums;
 
 namespace Garage.Views;
 
@@ -29,8 +30,9 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
         var model =  ConsoleInput.GetString(false);
         
         // Get Colour
-        Console.Write($"Enter Colour: ");
-        var color =  ConsoleInput.GetString(false);
+        Console.Clear();
+        RenderSubMenu(2);
+        var color = (VehicleColor)ConsoleInput.GetInt();
         
         // Instantiate new vehicle
         var vehicle = Vehicle.CreateVehicle(type);
@@ -62,6 +64,13 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
                 options.Add("3 - Motorcycle");
                 options.Add("4 - Boat");
                 options.Add("5 - Airplane");
+                break;
+            case 2:
+                title = "Choose colour";
+                foreach (var color in Enum.GetValues<VehicleColor>())
+                {
+                    options.Add($"{(int)color} - {color}");
+                }
                 break;
             default: break;
         }

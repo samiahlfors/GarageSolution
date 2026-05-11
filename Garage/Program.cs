@@ -1,4 +1,5 @@
 ﻿using Garage.Application;
+using Garage.Domain.Enums;
 using Garage.Domain.Vehicles;
 using Garage.Views;
 
@@ -30,7 +31,7 @@ class Program
         {
             Brand = "Audi",
             Model = "A4",
-            Color = "Red",
+            Color = VehicleColor.Black,
             NumberOfWheels = 4,
             LicensePlate = "ABC123"
         };
