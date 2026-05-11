@@ -1,4 +1,9 @@
-﻿using Garage.Application;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Garage.Application;
+using Garage.Application.DTOs;
+using Garage.Application.Services;
+using Garage.Domain;
 using Garage.Domain.Enums;
 using Garage.Domain.Vehicles;
 using Garage.Views;
@@ -24,18 +29,37 @@ class Program
 
     private static void Initialize(AppState appState)
     {
-        var garage = new Domain.Garage("Globengaraget", 5);
-        appState.AddGarage(garage);
+        var json = StorageService.Load();
         
-        var car = new Car
+        var options = new JsonSerializerOptions
         {
-            Brand = "Audi",
-            Model = "A4",
-            Color = VehicleColor.Black,
-            NumberOfWheels = 4,
-            LicensePlate = "ABC123"
+            Converters = { new JsonStringEnumConverter() }
         };
-        
-        garage.ParkVehicle(car);
+        var data = JsonSerializer.Deserialize<AppStateDto>(json, options)
+                   ?? new AppStateDto();
+
+        foreach (var garageDto in data.Garages)
+        {
+            var name = garageDto.Name;
+            var capacity = garageDto.Capacity;
+
+            var garage = new Domain.Garage(name, capacity);
+            appState.Garages.Add(garage);
+
+            foreach (var parkingSpot in garageDto.ParkingSpots)
+            {
+                var vehicleDto = parkingSpot.Vehicle;
+                if (vehicleDto == null) continue;
+                
+                var type = vehicleDto.VehicleType;
+                var vehicle = Vehicle.CreateVehicle((int)type);
+                vehicle.LicencePlate = vehicleDto.LicencePlate;
+                vehicle.Brand = vehicleDto.Brand;
+                vehicle.Model = vehicleDto.Model;
+                vehicle.Color = vehicleDto.Color;
+                    
+                garage.ParkVehicle(vehicle);
+            }
+        }
     }
 }
