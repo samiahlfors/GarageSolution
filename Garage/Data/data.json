@@ -1,0 +1,68 @@
+{
+  "Garages": [
+    {
+      "Name": "Globengaraget",
+      "Capacity": 5,
+      "ParkingSpots": [
+        {
+          "SpotIndex": 1,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Volvo",
+            "Model": "V70",
+            "LicencePlate": "ABC123",
+            "Color": "Red"
+          }
+        },
+        {
+          "SpotIndex": 2,
+          "Vehicle": {
+            "Type": "Bus",
+            "Brand": "Alfa Romeo",
+            "Model": "140AF",
+            "LicencePlate": "BUS999",
+            "Color": "Blue"
+          }
+        },
+        {
+          "SpotIndex": 3,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 4,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 5,
+          "Vehicle": null
+        }
+      ]
+    },
+    {
+      "Name": "Ett annat garage",
+      "Capacity": 2,
+      "ParkingSpots": [
+        {
+          "SpotIndex": 1,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Opel",
+            "Model": "Astra",
+            "LicencePlate": "OPL204",
+            "Color": "Black"
+          }
+        },
+        {
+          "SpotIndex": 2,
+          "Vehicle": {
+            "Type": "Motorcycle",
+            "Brand": "Yamaha",
+            "Model": "CB750",
+            "LicencePlate": "YMA204",
+            "Color": "Yellow"
+          }
+        }
+      ]
+    }
+  ]
+}
