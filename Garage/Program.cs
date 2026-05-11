@@ -4,8 +4,6 @@ using Garage.Application;
 using Garage.Application.DTOs;
 using Garage.Application.Services;
 using Garage.Domain;
-using Garage.Domain.Enums;
-using Garage.Domain.Vehicles;
 using Garage.Views;
 
 namespace Garage;
@@ -30,7 +28,6 @@ class Program
     private static void Initialize(AppState appState)
     {
         var json = StorageService.Load();
-        
         var options = new JsonSerializerOptions
         {
             Converters = { new JsonStringEnumConverter() }

@@ -6,8 +6,7 @@ public static class StorageService
     
     public static string Load()
     {
-        var json = File.ReadAllText(FilePath);
-
+        var json= File.ReadAllText(FilePath);
         return json;
     }
 }

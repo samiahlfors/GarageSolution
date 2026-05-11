@@ -7,16 +7,18 @@ public class GarageView(AppState state, Navigation navigation) : View
     public override string Title => "Garage";
     public override void Render()
     {
-        // Return a view of a specific garage
-        
         RenderHeader();
         
         Console.WriteLine($"Welcome to: {state.CurrentGarage.Name}");
         Console.WriteLine($"Occupied: {state.CurrentGarage.OccupiedSpots}/{state.CurrentGarage.Capacity}");
+        if (state.CurrentGarage.AtCapacity)
+        {
+            Console.WriteLine($"Garage is at capacity");
+        }
         
         var menu = new Menu("Menu", [
             "1 - List all vehicles",
-            "2 - Park vehicle",
+            $"2 - Park vehicle {(state.CurrentGarage.AtCapacity ? "(at capacity)" : "")}",
             "3 - Remove garage",
             "0 - Back"
         ]);
@@ -30,6 +32,8 @@ public class GarageView(AppState state, Navigation navigation) : View
                 navigation.NavigateTo(new VehicleListView(state, navigation));
                 break;
             case 2:
+                if (state.CurrentGarage.AtCapacity) break;
+                
                 navigation.NavigateTo(new AddVehicleView(state, navigation));
                 break;
             case 3:
@@ -44,10 +48,5 @@ public class GarageView(AppState state, Navigation navigation) : View
                 navigation.GoBack();
                 break;
         }
-    }
-
-    public override void OnExit()
-    {
-        base.OnExit();
     }
 }

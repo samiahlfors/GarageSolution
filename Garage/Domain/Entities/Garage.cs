@@ -44,7 +44,7 @@ public class Garage
     {
         if (AtCapacity)
         {
-            Console.WriteLine($"Garage is at capacity, can't park car");
+            Log.Error($"Garage is at capacity, can't park car");
             return;
         }
         
