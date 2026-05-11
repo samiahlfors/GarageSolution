@@ -19,7 +19,7 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
         
         // Get Licence Plate
         Console.Write($"Enter Licence Plate: ");
-        var licensePlate = ConsoleInput.GetString(false);
+        var licencePlate = ConsoleInput.GetString(false);
         
         // Get Brand
         Console.Write($"Enter Brand: ");
@@ -36,7 +36,7 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
         
         // Instantiate new vehicle
         var vehicle = Vehicle.CreateVehicle(type);
-        vehicle.LicensePlate = licensePlate;
+        vehicle.LicencePlate = licencePlate;
         vehicle.Model = model;
         vehicle.Brand = brand;
         vehicle.Color = color;
@@ -44,7 +44,7 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
         // Park vehicle in garage
         state.CurrentGarage.ParkVehicle(vehicle);
         
-        Console.WriteLine($"Vehicle: {licensePlate} parked in {state.CurrentGarage.Name}");
+        Console.WriteLine($"Vehicle: {licencePlate} parked in {state.CurrentGarage.Name}");
         Menu.Pause();
         
         navigation.GoBack();

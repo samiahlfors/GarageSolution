@@ -88,7 +88,7 @@ public class Garage
 
         foreach (var vehicle in vehicles)
         {
-            if (vehicle.LicensePlate.ToLower() == licencePlate.ToLower())
+            if (vehicle.LicencePlate.ToLower() == licencePlate.ToLower())
             {
                 return vehicle;
             }

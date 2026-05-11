@@ -15,7 +15,7 @@ public class VehicleListView(AppState state, Navigation navigation) : View
         for (var i = 0; i < vehicles.Length; i++)
         {
             var vehicle = vehicles[i];
-            Console.WriteLine($"{i + 1} - {vehicle.LicensePlate}");
+            Console.WriteLine($"{i + 1} - {vehicle.LicencePlate}");
         }
         
         Console.WriteLine();
@@ -33,7 +33,7 @@ public class VehicleListView(AppState state, Navigation navigation) : View
                 navigation.GoBack();
                 break;
             default:
-                var vehicle = state.CurrentGarage.FindVehicle(vehicles[choice - 1].LicensePlate);
+                var vehicle = state.CurrentGarage.FindVehicle(vehicles[choice - 1].LicencePlate);
                 navigation.NavigateTo(new VehicleView(state, navigation, vehicle));
                 break;
         }

@@ -14,7 +14,7 @@ public class VehicleView(AppState state, Navigation navigation, Vehicle vehicle)
         var parkingSpot = state.CurrentGarage.GetParkingSpot(vehicle);
         
         var info = new StringBuilder();
-        info.AppendLine($"Licence plate: {vehicle.LicensePlate}");
+        info.AppendLine($"Licence plate: {vehicle.LicencePlate}");
         info.AppendLine($"Parking space: {parkingSpot.SpotIndex}");
         info.AppendLine($"Vehicle type: {vehicle.VehicleType.ToString().ToLower()}");
         info.AppendLine($"Brand: {vehicle.Brand}");
