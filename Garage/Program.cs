@@ -9,7 +9,7 @@ class Program
     static void Main(string[] args)
     {
         var appState = new AppState();
-        var navigation = new Navigation(appState);
+        var navigation = new Navigation();
         
         Initialize(appState);
         

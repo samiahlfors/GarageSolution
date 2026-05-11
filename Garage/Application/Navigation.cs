@@ -2,38 +2,41 @@ using Garage.Views;
 
 namespace Garage.Application;
 
-public class Navigation(AppState appState)
+public class Navigation
 {
-    public View? CurrentView { get; set; }
-    public View? PreviousView { get; set; }
+    private Stack<View> History { get; } = new();
+    public View CurrentView => History.Peek();
     
-    public void NavigateTo(View nextView, View? previousView = null)
+    public void NavigateTo(View nextView)
     {
-        if (previousView != null)
-        {
-            PreviousView = previousView;
-            previousView.OnExit();   
-        }
+        // Call OnExit on current view
+        if (History.Count > 0) History.Peek().OnExit();
         
-        CurrentView = nextView;
-        CurrentView.Render();
-        CurrentView.OnEnter();
+        // Push next view into history
+        History.Push(nextView);
+        
+        // Render next view
+        nextView.Render();
+        nextView.OnEnter();
     }
 
     public void GoBackToMainMenu(AppState state)
     {
+        History.Clear();
         NavigateTo(new MainMenuView(state, this));
     }
     
     public void GoBack()
     {
-        NavigateTo(PreviousView);
-        PreviousView = null;
+        History.Pop();
+        
+        var nextView = History.Peek();
+        nextView.Render();
+        nextView.OnEnter();
     }
     
     public void Quit()
     {
-        CurrentView?.OnExit();
-        CurrentView = null;
+        History.Peek().OnExit();
     }
 }

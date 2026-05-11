@@ -20,10 +20,10 @@ public class MainMenuView(AppState state, Navigation navigation) : View
         switch (choice)
         {
             case 1:
-                navigation.NavigateTo(new GarageListView(state, navigation), this);
+                navigation.NavigateTo(new GarageListView(state, navigation));
                 break;
             case 2:
-                navigation.NavigateTo(new AddGarageView(state, navigation), this);
+                navigation.NavigateTo(new AddGarageView(state, navigation));
                 break;
             case 0:
                 navigation.Quit();

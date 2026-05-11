@@ -6,7 +6,11 @@ public abstract class View
     public abstract void Render();
 
     public virtual void OnEnter() {}
-    public virtual void OnExit() {}
+
+    public virtual void OnExit()
+    {
+        Console.Clear();
+    }
 
     public virtual void RenderHeader()
     {
