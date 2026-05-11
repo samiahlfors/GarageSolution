@@ -9,8 +9,11 @@ public class Navigation(AppState appState)
     
     public void NavigateTo(View nextView, View? previousView = null)
     {
-        PreviousView = previousView;
-        previousView?.OnExit();
+        if (previousView != null)
+        {
+            PreviousView = previousView;
+            previousView.OnExit();   
+        }
         
         CurrentView = nextView;
         CurrentView.Render();
@@ -24,8 +27,6 @@ public class Navigation(AppState appState)
     
     public void GoBack()
     {
-        if (PreviousView == null) return;
-        
         NavigateTo(PreviousView);
         PreviousView = null;
     }
