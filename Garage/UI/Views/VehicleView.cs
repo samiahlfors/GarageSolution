@@ -1,3 +1,4 @@
+using System.Text;
 using Garage.Application;
 using Garage.Domain;
 
@@ -10,9 +11,17 @@ public class VehicleView(AppState state, Navigation navigation, Vehicle vehicle)
     {
         RenderHeader();
         
-        Console.WriteLine($"So, {vehicle.LicensePlate}");
+        var parkingSpot = state.CurrentGarage.GetParkingSpot(vehicle);
         
-        Console.WriteLine();
+        var info = new StringBuilder();
+        info.AppendLine($"Licence plate: {vehicle.LicensePlate}");
+        info.AppendLine($"Parking space: {parkingSpot.SpotIndex}");
+        info.AppendLine($"Vehicle type: {vehicle.VehicleType.ToString().ToLower()}");
+        info.AppendLine($"Brand: {vehicle.Brand}");
+        info.AppendLine($"Model: {vehicle.Model}");
+        info.AppendLine($"Color: {vehicle.Color.ToString().ToLower()}");
+        
+        Console.WriteLine(info.ToString());
         
         var menu = new Menu("Menu", [
             "1 - Remove Vehicle from Parking Spot",
@@ -27,7 +36,6 @@ public class VehicleView(AppState state, Navigation navigation, Vehicle vehicle)
             case 1:
                 if (new ConfirmationView().Confirm("Remove vehicle?", "Are you sure you want to remove this vehicle from the parking spot?"))
                 {
-                    var parkingSpot = state.CurrentGarage.GetParkingSpot(vehicle);
                     state.CurrentGarage.RemoveVehicle(parkingSpot);
                     navigation.GoBackToMainMenu(state);
                 }
