@@ -10,6 +10,7 @@ public class Garage
     public int Capacity { get; set; }
     public int OccupiedSpots => _occupiedSpots;
     public int FreeSpots => _freeSpots;
+    public bool AtCapacity => OccupiedSpots >= Capacity;
 
     public Garage(string name, int capacity)
     {
@@ -41,15 +42,43 @@ public class Garage
     
     public void ParkVehicle(Vehicle vehicle)
     {
-        if (_parkingSpots[_occupiedSpots].Park(vehicle))
+        if (AtCapacity)
         {
+            Console.WriteLine($"Garage is at capacity, can't park car");
+            return;
+        }
+        
+        foreach (var parkingSpot in _parkingSpots)
+        {
+            if (parkingSpot.IsOccupied) continue;
+            
+            parkingSpot.Park(vehicle);
             _occupiedSpots++;
+
+            break;
         }
     }
 
-    public void RemoveVehicle(Vehicle vehicle)
+    public void RemoveVehicle(ParkingSpot parkingSpot)
     {
         // Remove a vehicle, if found
+        if (parkingSpot.RemoveVehicle())
+        {
+            _occupiedSpots--;
+        }
+    }
+
+    public ParkingSpot? GetParkingSpot(Vehicle vehicle)
+    {
+        foreach (var parkingSpot in _parkingSpots)
+        {
+            if (parkingSpot.ParkedVehicle == vehicle)
+            {
+                return parkingSpot;
+            }
+        }
+        
+        return null;
     }
     
     public Vehicle? FindVehicle(string licencePlate)

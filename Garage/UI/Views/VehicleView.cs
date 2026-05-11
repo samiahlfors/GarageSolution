@@ -15,6 +15,7 @@ public class VehicleView(AppState state, Navigation navigation, Vehicle vehicle)
         Console.WriteLine();
         
         var menu = new Menu("Menu", [
+            "1 - Remove Vehicle from Parking Spot",
             "0 - Go back"
         ]);
         menu.Show();
@@ -23,6 +24,14 @@ public class VehicleView(AppState state, Navigation navigation, Vehicle vehicle)
         
         switch (choice)
         {
+            case 1:
+                if (new ConfirmationView().Confirm("Remove vehicle?", "Are you sure you want to remove this vehicle from the parking spot?"))
+                {
+                    var parkingSpot = state.CurrentGarage.GetParkingSpot(vehicle);
+                    state.CurrentGarage.RemoveVehicle(parkingSpot);
+                    navigation.GoBackToMainMenu(state);
+                }
+                break;
             case 0:
                 navigation.GoBack();
                 break;

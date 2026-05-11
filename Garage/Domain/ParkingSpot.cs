@@ -22,5 +22,11 @@ public class ParkingSpot
         return true;
     }
 
+    public bool RemoveVehicle()
+    {
+        _vehicle = null;
+        return true;
+    }
+
     public bool IsOccupied => _vehicle is not null;
 }
