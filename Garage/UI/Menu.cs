@@ -13,6 +13,7 @@ public class Menu
 
     public void Show()
     {
+        Console.WriteLine("------------------------");
         Console.WriteLine(Title);
         foreach (var option in Options)
         {
