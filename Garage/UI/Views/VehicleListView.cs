@@ -33,12 +33,8 @@ public class VehicleListView(AppState state, Navigation navigation) : View
                 navigation.GoBack();
                 break;
             default:
-                /*
-                var garage = state.Garages[choice - 1];
-                state.SetCurrentGarage(garage);
-                
-                navigation.NavigateTo(new GarageView(state, navigation));
-                */
+                var vehicle = state.CurrentGarage.FindVehicle(vehicles[choice - 1].LicensePlate);
+                navigation.NavigateTo(new VehicleView(state, navigation, vehicle));
                 break;
         }
     }
