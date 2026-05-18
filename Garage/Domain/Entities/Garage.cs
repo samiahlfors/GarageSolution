@@ -44,12 +44,6 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
     
     public void ParkVehicle(T vehicle)
     {
-        if (AtCapacity)
-        {
-            Log.Error($"Garage is at capacity, can't park car");
-            return;
-        }
-        
         foreach (var parkingSpot in _parkingSpots)
         {
             if (parkingSpot.IsOccupied) continue;
@@ -61,13 +55,15 @@ public class Garage<T> : IEnumerable<T> where T : Vehicle
         }
     }
 
-    public void RemoveVehicle(ParkingSpot<T> parkingSpot)
+    public bool RemoveVehicle(ParkingSpot<T> parkingSpot)
     {
-        // Remove a vehicle, if found
-        if (parkingSpot.RemoveVehicle())
+        if (!parkingSpot.RemoveVehicle())
         {
-            _occupiedSpots--;
+            return false;
         }
+        
+        _occupiedSpots--;
+        return true;
     }
 
     public ParkingSpot<T>? GetParkingSpot(Vehicle vehicle)

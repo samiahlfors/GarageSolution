@@ -22,6 +22,8 @@ public class ParkingSpot<T> where T : Vehicle
 
     public bool RemoveVehicle()
     {
+        if (ParkedVehicle == null) return false;
+        
         ParkedVehicle = null;
         return true;
     }
