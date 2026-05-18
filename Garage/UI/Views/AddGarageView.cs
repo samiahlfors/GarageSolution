@@ -1,4 +1,5 @@
 using Garage.Application;
+using Garage.Domain;
 
 namespace Garage.Views;
 
@@ -13,7 +14,7 @@ public class AddGarageView(AppState state, Navigation navigation) : View
         Console.Write($"How many parking spots does {title} have?");
         var amount = ConsoleInput.GetInt(false);
 
-        var garage = new Domain.Garage(title, amount);
+        var garage = new Garage<Vehicle>(title, amount);
         state.AddGarage(garage);
         
         Console.Clear();

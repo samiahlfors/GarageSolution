@@ -13,4 +13,8 @@
         </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Application\Interfaces\" />
+    </ItemGroup>
+
 </Project>

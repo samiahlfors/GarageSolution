@@ -40,7 +40,7 @@ class Program
             var name = garageDto.Name;
             var capacity = garageDto.Capacity;
 
-            var garage = new Domain.Garage(name, capacity);
+            var garage = new Garage<Vehicle>(name, capacity);
             appState.Garages.Add(garage);
 
             foreach (var parkingSpot in garageDto.ParkingSpots)

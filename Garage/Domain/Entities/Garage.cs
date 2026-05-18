@@ -1,8 +1,10 @@
+using System.Collections;
+
 namespace Garage.Domain;
 
-public class Garage
+public class Garage<T> : IEnumerable<T> where T : Vehicle
 {
-    private ParkingSpot[] _parkingSpots;
+    private ParkingSpot<T>[] _parkingSpots;
     private int _occupiedSpots = 0;
     private int _freeSpots = 0;
     
@@ -17,10 +19,10 @@ public class Garage
         Name = name;
         Capacity = capacity;
         
-        _parkingSpots = new ParkingSpot[capacity];
+        _parkingSpots = new ParkingSpot<T>[capacity];
         for (var i = 0; i < capacity; i++)
         {
-            _parkingSpots[i] = new ParkingSpot(i + 1);
+            _parkingSpots[i] = new ParkingSpot<T>(i + 1);
         }
     }
 
@@ -40,7 +42,7 @@ public class Garage
         return results;
     }
     
-    public void ParkVehicle(Vehicle vehicle)
+    public void ParkVehicle(T vehicle)
     {
         if (AtCapacity)
         {
@@ -59,7 +61,7 @@ public class Garage
         }
     }
 
-    public void RemoveVehicle(ParkingSpot parkingSpot)
+    public void RemoveVehicle(ParkingSpot<T> parkingSpot)
     {
         // Remove a vehicle, if found
         if (parkingSpot.RemoveVehicle())
@@ -68,7 +70,7 @@ public class Garage
         }
     }
 
-    public ParkingSpot? GetParkingSpot(Vehicle vehicle)
+    public ParkingSpot<T>? GetParkingSpot(Vehicle vehicle)
     {
         foreach (var parkingSpot in _parkingSpots)
         {
@@ -100,5 +102,21 @@ public class Garage
     public void FilterVehicles()
     {
         // Returns a list of vehicles based on a filter
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        foreach (var spot in _parkingSpots)
+        {
+            if (spot is { IsOccupied: true, ParkedVehicle: not null })
+            {
+                yield return spot.ParkedVehicle;
+            }
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

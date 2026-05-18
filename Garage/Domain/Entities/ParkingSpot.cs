@@ -1,9 +1,7 @@
 namespace Garage.Domain;
 
-public class ParkingSpot
+public class ParkingSpot<T> where T : Vehicle
 {
-    private Vehicle? _vehicle;
-    
     public int SpotIndex { get; set; }
 
     public ParkingSpot(int index)
@@ -11,22 +9,22 @@ public class ParkingSpot
         SpotIndex = index;
     }
     
-    public Vehicle? ParkedVehicle => _vehicle;
-    
-    public bool Park(Vehicle vehicle)
+    public T? ParkedVehicle { get; private set; }
+
+    public bool Park(T vehicle)
     {
         if (IsOccupied) return false;
         
-        _vehicle = vehicle;
+        ParkedVehicle = vehicle;
 
         return true;
     }
 
     public bool RemoveVehicle()
     {
-        _vehicle = null;
+        ParkedVehicle = null;
         return true;
     }
 
-    public bool IsOccupied => _vehicle is not null;
+    public bool IsOccupied => ParkedVehicle is not null;
 }

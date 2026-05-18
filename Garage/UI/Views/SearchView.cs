@@ -51,7 +51,7 @@ public class SearchView(AppState state, Navigation navigation) : View
         }
     }
 
-    private (Vehicle vehicle, Domain.Garage garage)? FindVehicle(string licencePlate)
+    private (Vehicle vehicle, Garage<Vehicle> garage)? FindVehicle(string licencePlate)
     {
         foreach (var garage in state.Garages)
         {
