@@ -1,6 +1,6 @@
 using Garage.Application;
 
-namespace Garage.Views;
+namespace Garage.UI.Views;
 
 public class MainMenuView(AppState state, Navigation navigation) : View
 {
@@ -13,6 +13,7 @@ public class MainMenuView(AppState state, Navigation navigation) : View
              $"1 - List Garages ({state.Garages.Count})",
              "2 - Add New Garage",
              "3 - Find Vehicle",
+             "4 - Filter Vehicles",
              "0 - Exit"
         ]);
         menu.Show();
@@ -28,6 +29,9 @@ public class MainMenuView(AppState state, Navigation navigation) : View
                 break;
             case 3:
                 navigation.NavigateTo(new SearchView(state, navigation));
+                break;
+            case 4:
+                navigation.NavigateTo(new FilterView(state, navigation));
                 break;
             case 0:
                 state.Quit(navigation);
