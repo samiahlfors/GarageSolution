@@ -2,11 +2,12 @@ using Garage.Application;
 using Garage.Domain;
 using Garage.Domain.Enums;
 
-namespace Garage.Views;
+namespace Garage.UI.Views;
 
 public class AddVehicleView(AppState state, Navigation navigation) : View
 {
     public override string Title => "Add Vehicle";
+
     public override void Render()
     {
         RenderHeader();
@@ -18,8 +19,22 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
         Console.Clear();
         
         // Get Licence Plate
-        Console.Write($"Enter Licence Plate: ");
-        var licencePlate = ConsoleInput.GetString(false);
+        var waitingForLicencePlate = true;
+        var licencePlate = "";
+        while (true)
+        {
+            Console.Write($"Enter Licence Plate: ");
+            licencePlate = ConsoleInput.GetString(false);
+            if (!Validator.TryParseLicencePlate(licencePlate, out licencePlate))
+            {
+                Console.WriteLine($"Invalid format of licence plate {licencePlate}");
+                Menu.Pause();
+
+                continue;
+            }
+
+            break;
+        }
         
         // Get Brand
         Console.Write($"Enter Brand: ");
@@ -49,7 +64,7 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
         
         navigation.GoBack();
     }
-    
+
     private static void RenderSubMenu(int step)
     {
         var title = "";

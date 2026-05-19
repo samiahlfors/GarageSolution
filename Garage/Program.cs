@@ -4,7 +4,7 @@ using Garage.Application;
 using Garage.Application.DTOs;
 using Garage.Application.Services;
 using Garage.Domain;
-using Garage.Views;
+using Garage.UI.Views;
 
 namespace Garage;
 
@@ -50,7 +50,10 @@ class Program
                 
                 var type = vehicleDto.VehicleType;
                 var vehicle = Vehicle.CreateVehicle((int)type);
-                vehicle.LicencePlate = vehicleDto.LicencePlate;
+                if (Validator.TryParseLicencePlate(vehicleDto.LicencePlate, out var licensePlate))
+                {
+                    vehicle.LicencePlate = licensePlate;   
+                }
                 vehicle.Brand = vehicleDto.Brand;
                 vehicle.Model = vehicleDto.Model;
                 vehicle.Color = vehicleDto.Color;
