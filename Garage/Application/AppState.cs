@@ -28,6 +28,18 @@ public class AppState
         Garages.Remove(garage);
     }
 
+    public IEnumerable<Vehicle> GetAllVehicles()
+    {
+        var vehicles = new List<Vehicle>();
+
+        foreach (var garage in Garages)
+        {
+            vehicles.AddRange(garage);
+        }
+        
+        return vehicles;
+    }
+
     public void Quit(Navigation navigation)
     {
         navigation.Quit();
