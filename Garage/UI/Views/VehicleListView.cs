@@ -1,6 +1,6 @@
 using Garage.Application;
 
-namespace Garage.Views;
+namespace Garage.UI.Views;
 
 public class VehicleListView(AppState state, Navigation navigation) : View
 {

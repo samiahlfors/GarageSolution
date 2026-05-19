@@ -2,7 +2,7 @@ using System.Text;
 using Garage.Application;
 using Garage.Domain;
 
-namespace Garage.Views;
+namespace Garage.UI.Views;
 
 public class VehicleView(AppState state, Navigation navigation, Vehicle vehicle) : View
 {

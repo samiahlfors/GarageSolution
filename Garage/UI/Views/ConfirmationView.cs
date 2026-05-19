@@ -1,4 +1,4 @@
-namespace Garage.Views;
+namespace Garage.UI.Views;
 
 public class ConfirmationView
 {

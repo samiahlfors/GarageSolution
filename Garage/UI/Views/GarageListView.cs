@@ -1,6 +1,7 @@
 using Garage.Application;
+using Garage.Domain;
 
-namespace Garage.Views;
+namespace Garage.UI.Views;
 
 public class GarageListView(AppState state, Navigation navigation) : View
 {
@@ -8,7 +9,7 @@ public class GarageListView(AppState state, Navigation navigation) : View
     public override void Render()
     {
         RenderHeader();
-
+        
         for (var i = 0; i < state.Garages.Count; i++)
         {
             var garage = state.Garages[i];

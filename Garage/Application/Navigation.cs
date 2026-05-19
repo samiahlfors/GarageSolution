@@ -1,4 +1,4 @@
-using Garage.Views;
+using Garage.UI.Views;
 
 namespace Garage.Application;
 

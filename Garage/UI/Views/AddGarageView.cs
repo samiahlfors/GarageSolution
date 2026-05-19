@@ -1,7 +1,7 @@
 using Garage.Application;
 using Garage.Domain;
 
-namespace Garage.Views;
+namespace Garage.UI.Views;
 
 public class AddGarageView(AppState state, Navigation navigation) : View
 {
