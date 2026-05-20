@@ -1,6 +1,6 @@
 using System.Text;
 using Garage.Application;
-using Garage.Domain;
+using Garage.Domain.Entities;
 
 namespace Garage.UI.Views;
 
@@ -11,7 +11,8 @@ public class VehicleView(AppState state, Navigation navigation, Vehicle vehicle)
     {
         RenderHeader();
         
-        var parkingSpot = state.CurrentGarage.GetParkingSpot(vehicle);
+        var handler = new GarageHandler<Vehicle>(state.CurrentGarage);
+        var parkingSpot = handler.GetParkingSpot(vehicle);
         
         var info = new StringBuilder();
         info.AppendLine($"Licence plate: {vehicle.LicencePlate}");
