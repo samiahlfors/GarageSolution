@@ -1,4 +1,10 @@
 {
+  "Notes": [
+    "TEST DATA SET - GENERATED MAY 2026",
+    "Gemini was used to fill this list, because I ain't spending time researching cars.",
+    "All licence plates are unique and follow the XXX### format.",
+    "Available types: Car, Bus, Motorcycle, Boat, Airplane."
+  ],
   "Garages": [
     {
       "Name": "Globengaraget",
@@ -18,15 +24,21 @@
           "SpotIndex": 2,
           "Vehicle": {
             "Type": "Bus",
-            "Brand": "Alfa Romeo",
-            "Model": "140AF",
+            "Brand": "Scania",
+            "Model": "Citywide",
             "LicencePlate": "BUS999",
             "Color": "Blue"
           }
         },
         {
           "SpotIndex": 3,
-          "Vehicle": null
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Alfa Romeo",
+            "Model": "Giulia",
+            "LicencePlate": "CAR201",
+            "Color": "Yellow"
+          }
         },
         {
           "SpotIndex": 4,
@@ -39,17 +51,17 @@
       ]
     },
     {
-      "Name": "Ett annat garage",
-      "Capacity": 2,
+      "Name": "Södermalm Underground",
+      "Capacity": 8,
       "ParkingSpots": [
         {
           "SpotIndex": 1,
           "Vehicle": {
             "Type": "Car",
-            "Brand": "Opel",
-            "Model": "Astra",
-            "LicencePlate": "OPL204",
-            "Color": "Black"
+            "Brand": "Tesla",
+            "Model": "Model 3",
+            "LicencePlate": "TSL442",
+            "Color": "White"
           }
         },
         {
@@ -57,9 +69,255 @@
           "Vehicle": {
             "Type": "Motorcycle",
             "Brand": "Yamaha",
-            "Model": "CB750",
-            "LicencePlate": "YMA204",
-            "Color": "Yellow"
+            "Model": "MT-07",
+            "LicencePlate": "YAM711",
+            "Color": "Black"
+          }
+        },
+        {
+          "SpotIndex": 3,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 4,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Volkswagen",
+            "Model": "Golf",
+            "LicencePlate": "VWG883",
+            "Color": "Grey"
+          }
+        },
+        {
+          "SpotIndex": 5,
+          "Vehicle": {
+            "Type": "Motorcycle",
+            "Brand": "Harley-Davidson",
+            "Model": "Iron 883",
+            "LicencePlate": "HDV205",
+            "Color": "Orange"
+          }
+        },
+        {
+          "SpotIndex": 6,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 7,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "BMW",
+            "Model": "320i",
+            "LicencePlate": "BMW509",
+            "Color": "Silver"
+          }
+        },
+        {
+          "SpotIndex": 8,
+          "Vehicle": null
+        }
+      ]
+    },
+    {
+      "Name": "Arlanda Hangar B",
+      "Capacity": 4,
+      "ParkingSpots": [
+        {
+          "SpotIndex": 1,
+          "Vehicle": {
+            "Type": "Airplane",
+            "Brand": "Cessna",
+            "Model": "172 Skyhawk",
+            "LicencePlate": "SNA841",
+            "Color": "White"
+          }
+        },
+        {
+          "SpotIndex": 2,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 3,
+          "Vehicle": {
+            "Type": "Airplane",
+            "Brand": "Piper",
+            "Model": "PA-28 Cherokee",
+            "LicencePlate": "PPR312",
+            "Color": "Red"
+          }
+        },
+        {
+          "SpotIndex": 4,
+          "Vehicle": null
+        }
+      ]
+    },
+    {
+      "Name": "Hammarby Marina Dock",
+      "Capacity": 6,
+      "ParkingSpots": [
+        {
+          "SpotIndex": 1,
+          "Vehicle": {
+            "Type": "Boat",
+            "Brand": "Buster",
+            "Model": "Magnum",
+            "LicencePlate": "BST604",
+            "Color": "Silver"
+          }
+        },
+        {
+          "SpotIndex": 2,
+          "Vehicle": {
+            "Type": "Boat",
+            "Brand": "Nimbus",
+            "Model": "Weekender 9",
+            "LicencePlate": "NMB419",
+            "Color": "White"
+          }
+        },
+        {
+          "SpotIndex": 3,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 4,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 5,
+          "Vehicle": {
+            "Type": "Boat",
+            "Brand": "Yamarin",
+            "Model": "63 BR",
+            "LicencePlate": "YMR733",
+            "Color": "Blue"
+          }
+        },
+        {
+          "SpotIndex": 6,
+          "Vehicle": null
+        }
+      ]
+    },
+    {
+      "Name": "Slussen Transit Depot",
+      "Capacity": 4,
+      "ParkingSpots": [
+        {
+          "SpotIndex": 1,
+          "Vehicle": {
+            "Type": "Bus",
+            "Brand": "Volvo",
+            "Model": "7900 Electric",
+            "LicencePlate": "VLB104",
+            "Color": "Green"
+          }
+        },
+        {
+          "SpotIndex": 2,
+          "Vehicle": {
+            "Type": "Bus",
+            "Brand": "MAN",
+            "Model": "Lion's City",
+            "LicencePlate": "MAN882",
+            "Color": "Red"
+          }
+        },
+        {
+          "SpotIndex": 3,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 4,
+          "Vehicle": {
+            "Type": "Bus",
+            "Brand": "Mercedes-Benz",
+            "Model": "Citaro",
+            "LicencePlate": "MBZ551",
+            "Color": "White"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Kista Science Park Garage",
+      "Capacity": 10,
+      "ParkingSpots": [
+        {
+          "SpotIndex": 1,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Audi",
+            "Model": "e-tron",
+            "LicencePlate": "AUD921",
+            "Color": "Black"
+          }
+        },
+        {
+          "SpotIndex": 2,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Polestar",
+            "Model": "2",
+            "LicencePlate": "PLR608",
+            "Color": "Grey"
+          }
+        },
+        {
+          "SpotIndex": 3,
+          "Vehicle": {
+            "Type": "Motorcycle",
+            "Brand": "Ducati",
+            "Model": "Monster",
+            "LicencePlate": "DCT400",
+            "Color": "Red"
+          }
+        },
+        {
+          "SpotIndex": 4,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 5,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 6,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Porsche",
+            "Model": "Taycan",
+            "LicencePlate": "PRC911",
+            "Color": "Other"
+          }
+        },
+        {
+          "SpotIndex": 7,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 8,
+          "Vehicle": {
+            "Type": "Car",
+            "Brand": "Toyota",
+            "Model": "RAV4",
+            "LicencePlate": "TYT354",
+            "Color": "Silver"
+          }
+        },
+        {
+          "SpotIndex": 9,
+          "Vehicle": null
+        },
+        {
+          "SpotIndex": 10,
+          "Vehicle": {
+            "Type": "Motorcycle",
+            "Brand": "BMW",
+            "Model": "R1250 GS",
+            "LicencePlate": "BGS845",
+            "Color": "Black"
           }
         }
       ]
