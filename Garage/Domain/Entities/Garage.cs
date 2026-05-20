@@ -26,24 +26,6 @@ public class Garage<T> : IEnumerable<T>, IGarage where T : Vehicle
         }
     }
     
-    /*
-    public Vehicle[] GetVehicles()
-    {
-        Vehicle[] results = new Vehicle[_occupiedSpots];
-        
-        for (var i = 0; i < _occupiedSpots; i++)
-        {
-            var vehicle = _parkingSpots[i].ParkedVehicle;
-            if (vehicle != null)
-            {
-                results[i] = vehicle;   
-            }
-        }
-        
-        return results;
-    }
-    */
-    
     public void ParkVehicle(T vehicle)
     {
         foreach (var parkingSpot in _parkingSpots)
@@ -111,18 +93,6 @@ public class Garage<T> : IEnumerable<T>, IGarage where T : Vehicle
         }
         
         return null;
-    }
-
-    IEnumerable<Vehicle> IGarage.Vehicles { get; }
-
-    public IEnumerable<Vehicle> Vehicles()
-    {
-        return null;
-    }
-
-    public void FilterVehicles()
-    {
-        // Returns a list of vehicles based on a filter
     }
 
     public IEnumerator<T> GetEnumerator()

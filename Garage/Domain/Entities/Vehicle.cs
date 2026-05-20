@@ -1,5 +1,5 @@
+using Garage.Domain.Entities.Vehicles;
 using Garage.Domain.Enums;
-using Garage.Domain.Vehicles;
 
 namespace Garage.Domain;
 
