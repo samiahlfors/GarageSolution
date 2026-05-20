@@ -1,13 +1,14 @@
+using Garage.Application.Interfaces;
 using Garage.Domain.Entities.Vehicles;
 using Garage.Domain.Enums;
 
 namespace Garage.Domain.Entities;
 
-public abstract class Vehicle
+public abstract class Vehicle : IVehicle
 {
-    public string? LicencePlate { get; set; }
-    public string Model { get; set; }
-    public string Brand { get; set; }
+    public string LicencePlate { get; set; } = "";
+    public string Model { get; set; } = "";
+    public string Brand { get; set; } = "";
     public VehicleColor Color { get; set; }
     public int NumberOfWheels { get; set; }
     public virtual VehicleType VehicleType { get; set; }
