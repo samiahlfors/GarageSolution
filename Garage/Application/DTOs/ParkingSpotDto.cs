@@ -1,5 +1,3 @@
-using Garage.Domain;
-
 namespace Garage.Application.DTOs;
 
 public class ParkingSpotDto
