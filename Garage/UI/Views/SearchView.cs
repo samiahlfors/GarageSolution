@@ -50,7 +50,8 @@ public class SearchView(AppState state, Navigation navigation) : View
     {
         foreach (var garage in state.Garages)
         {
-            var vehicle = garage.FindVehicle(licencePlate);
+            var handler = new GarageHandler<Vehicle>(garage);
+            var vehicle = handler.FindVehicle(licencePlate);
             if (vehicle != null)
             {
                 return (vehicle, garage);

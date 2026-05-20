@@ -1,4 +1,5 @@
 using Garage.Application;
+using Garage.Domain;
 
 namespace Garage.UI.Views;
 
@@ -10,9 +11,10 @@ public class VehicleListView(AppState state, Navigation navigation) : View
         RenderHeader();
         
         var garage = state.CurrentGarage;
-        var vehicles = garage.GetVehicles();
-
-        for (var i = 0; i < vehicles.Length; i++)
+        var handler = new GarageHandler<Vehicle>(garage);
+        var vehicles = handler.GetVehicles().ToList();
+        
+        for (var i = 0; i < vehicles.Count(); i++)
         {
             var vehicle = vehicles[i];
             Console.WriteLine($"{i + 1} - {vehicle.LicencePlate}");
@@ -33,7 +35,7 @@ public class VehicleListView(AppState state, Navigation navigation) : View
                 navigation.GoBack();
                 break;
             default:
-                var vehicle = state.CurrentGarage.FindVehicle(vehicles[choice - 1].LicencePlate);
+                var vehicle = handler.FindVehicle(vehicles[choice - 1].LicencePlate);
                 navigation.NavigateTo(new VehicleView(state, navigation, vehicle));
                 break;
         }

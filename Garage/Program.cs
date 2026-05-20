@@ -42,7 +42,8 @@ class Program
 
             var garage = new Garage<Vehicle>(name, capacity);
             appState.Garages.Add(garage);
-
+            
+            var handler = new GarageHandler<Vehicle>(garage);
             foreach (var parkingSpot in garageDto.ParkingSpots)
             {
                 var vehicleDto = parkingSpot.Vehicle;
@@ -57,8 +58,8 @@ class Program
                 vehicle.Brand = vehicleDto.Brand;
                 vehicle.Model = vehicleDto.Model;
                 vehicle.Color = vehicleDto.Color;
-                    
-                garage.ParkVehicle(vehicle);
+                
+                handler.ParkVehicle(vehicle);
             }
         }
     }

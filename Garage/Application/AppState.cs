@@ -1,11 +1,12 @@
+using Garage.Application.Interfaces;
 using Garage.Domain;
 
 namespace Garage.Application;
 
 public class AppState
 {
-    public List<Garage<Vehicle>> Garages { get; set; }
     public Garage<Vehicle>? CurrentGarage { get; private set; }
+    public List<Garage<Vehicle>> Garages { get; set; }
 
     public AppState()
     {

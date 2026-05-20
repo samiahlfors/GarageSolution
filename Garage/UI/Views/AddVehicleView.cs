@@ -57,7 +57,11 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
         vehicle.Color = color;
         
         // Park vehicle in garage
-        state.CurrentGarage.ParkVehicle(vehicle);
+        if (state.CurrentGarage != null)
+        {
+            var handler = new GarageHandler<Vehicle>((Garage<Vehicle>)state.CurrentGarage);
+            handler.ParkVehicle(vehicle);
+        }
         
         Console.WriteLine($"Vehicle: {licencePlate} parked in {state.CurrentGarage.Name}");
         Menu.Pause();
