@@ -73,9 +73,6 @@ public class FilterView(AppState state, Navigation navigation) : View
 
         var color = (VehicleColor)ConsoleInput.GetInt();
         filter.Colors.Add(color);
-
-        Console.WriteLine($"{color} added!");
-        Menu.Pause();
     }
 
     private void AddBrandFilter(VehicleFilter filter)
@@ -85,9 +82,6 @@ public class FilterView(AppState state, Navigation navigation) : View
         
         var brand = ConsoleInput.GetString(false);
         filter.Brands.Add(brand);
-        
-        Console.WriteLine($"{brand} added!");
-        Menu.Pause();
     }
     
     private void ShowVehicles(VehicleFilter filter)
@@ -109,14 +103,13 @@ public class FilterView(AppState state, Navigation navigation) : View
         }
         
         var result = query.ToList();
+        var index = 1;
         foreach (var vehicle in result)
         {
-            Console.WriteLine($"{vehicle.LicencePlate}");
+            Console.WriteLine($"{index++}: {vehicle.Brand} {vehicle.Model}, a {vehicle.Color.ToString().ToLower()} {vehicle.VehicleType.ToString().ToLower()} with licence plate {vehicle.LicencePlate}");
         }
         
-        Console.WriteLine($"Colors selected: {string.Join(", ", filter.Colors)}");
-
-        Console.ReadKey();
+        Menu.Pause();
     }
 
     private void RenderColorPicker()
