@@ -1,4 +1,5 @@
 using Garage.Application;
+using Garage.Application.Helpers;
 using Garage.Domain.Entities;
 using Garage.Domain.Enums;
 
@@ -27,7 +28,16 @@ public class AddVehicleView(AppState state, Navigation navigation) : View
             licencePlate = ConsoleInput.GetString(false);
             if (!Validator.TryParseLicencePlate(licencePlate, out licencePlate))
             {
-                Console.WriteLine($"Invalid format of licence plate {licencePlate}");
+                Log.Error($"Invalid format of licence plate {licencePlate}");
+                Menu.Pause();
+
+                continue;
+            }
+
+            var vehicles = state.GetAllVehicles();
+            if (vehicles.Any(v => v.LicencePlate == licencePlate))
+            {
+                Log.Error($"{licencePlate.ToLicencePlateFormat()} is already parked in a garage");
                 Menu.Pause();
 
                 continue;

@@ -1,3 +1,4 @@
+using Garage.Application.Helpers;
 using Garage.Application.Interfaces;
 using Garage.Domain.Entities.Vehicles;
 using Garage.Domain.Enums;
@@ -25,4 +26,8 @@ public abstract class Vehicle : IVehicle
             default: return new Car();
         }
     }
+    
+    // Formats the licence plate to XXX-###
+    public string FormattedLicencePlate => LicencePlate.ToLicencePlateFormat();
+
 }
