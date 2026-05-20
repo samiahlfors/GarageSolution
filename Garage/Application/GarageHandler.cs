@@ -1,9 +1,12 @@
+using Garage.Application.Interfaces;
 using Garage.Domain;
 
 namespace Garage.Application;
 
-public class GarageHandler<T>(Garage<T>? garage) where T : Vehicle
+public class GarageHandler<T>(Garage<T>? garage) : IGarageHandler<T> where T : Vehicle
 {
+    private readonly Garage<T>? _garage = garage;
+
     public IEnumerable<Vehicle> GetVehicles() => garage.GetVehicles();
     public Vehicle? FindVehicle(string licencePlate) => garage.FindVehicle(licencePlate);
     

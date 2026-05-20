@@ -10,5 +10,4 @@ public interface IGarage
 
     IEnumerable<Vehicle> GetVehicles();
     Vehicle? FindVehicle(string licencePlate);
-    IEnumerable<Vehicle> Vehicles { get; }
 }
