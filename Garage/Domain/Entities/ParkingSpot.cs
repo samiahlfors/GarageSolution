@@ -1,3 +1,5 @@
+using Garage.Domain.Entities;
+
 namespace Garage.Domain;
 
 public class ParkingSpot<T> where T : Vehicle

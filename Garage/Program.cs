@@ -4,6 +4,7 @@ using Garage.Application;
 using Garage.Application.DTOs;
 using Garage.Application.Services;
 using Garage.Domain;
+using Garage.Domain.Entities;
 using Garage.UI.Views;
 
 namespace Garage;

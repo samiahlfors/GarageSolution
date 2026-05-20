@@ -1,5 +1,6 @@
 using Garage.Application.Interfaces;
 using Garage.Domain;
+using Garage.Domain.Entities;
 
 namespace Garage.Application;
 

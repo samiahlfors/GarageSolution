@@ -1,7 +1,7 @@
 using Garage.Domain.Entities.Vehicles;
 using Garage.Domain.Enums;
 
-namespace Garage.Domain;
+namespace Garage.Domain.Entities;
 
 public abstract class Vehicle
 {
