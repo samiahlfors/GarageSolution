@@ -3,5 +3,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e14df361_002D55fc_002D4a03_002Db6b7_002D185dc574c648/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ParkVehicle_ShouldSucceed_WhenGarageHasEmptySpots" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::24746BFC-1BA4-4C2B-93FF-58C1D403701D::net10.0::Garage.Tests.GarageTest.ParkVehicle_ShouldSucceed_WhenGarageHasEmptySpots&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::24746BFC-1BA4-4C2B-93FF-58C1D403701D::net10.0::Garage.Tests.GarageTest.ParkVehicle_ShouldFail_WhenGarageIsFull&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
